@@ -1,0 +1,36 @@
+// here we are making a function is sass this will prevent the 
+// duplicated code we have in the style.scss file for each specific 
+// browser 
+// ... allows us to pass multiple values in 
+// eg when setting border may need to set like 
+// 20px, 10px. 0px, 5px; after first comma it would crash 
+// as we are passing too many variables but ... allows it 
+// and collect values as numbers 
+// if you want to access a specific value eg 2nd number 
+// use nth($value, 2);
+@mixin vendor($property, $value...)
+{
+    // setting individual border radius browser specific 
+    // apple browser 
+    // in order to use the value of the variable passed in 
+    // and include it with the rest of the line 
+    // need to start it with # and wrap it with {}
+    -webkit-#{$property}: $value;
+    // mozilla browser 
+    -moz-#{$property}: $value;
+    // microsoft browser 
+    -ms-#{$property}: $value;
+    // general browser 
+    #{$property}: $value;
+
+}
+
+// @content allows us to use the content inside base.theme.scss
+// where we have called this function 
+@mixin hocus()
+{
+    &:hover, &:focus
+    {
+        @content;
+    }
+}
