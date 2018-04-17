@@ -1,2 +1,29 @@
 // this is how you declare a variable using the $ sign 
 //$header-size:50px;
+@import "base.settings";
+@import "base.fonts";
+@import "base.palatte";
+@import "base.theme";
+
+body{
+
+    // set the line heights 
+    line-height: $base-line-height;
+
+    // set default font weights 
+    font-weight: $font-weight-normal;
+    
+}
+h1, h2, h3, h4, h5, h6
+{
+    // set headings font weights
+    font-weight: $font-weight-heading;
+}
+
+// set heading sizes
+h1 { font-size: $header-size-1;}
+h2 { font-size: $header-size-2;}
+h3 { font-size: $header-size-3;}
+h4 { font-size: $header-size-4;}
+h5 { font-size: $header-size-5;}
+h6 { font-size: $header-size-6;}

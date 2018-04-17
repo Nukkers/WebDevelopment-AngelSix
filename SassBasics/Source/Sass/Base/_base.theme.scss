@@ -1,0 +1,26 @@
+
+// setting the background color using the color from the palatte.scss file 
+html
+{
+    background: $color1;
+    color: $color4;
+}
+
+// this is called nesting 
+a{
+    color: $color3;
+    // & is called parent selector 
+    &:hover
+    {
+        color: $color2;
+    }
+}
+
+ul
+{
+    margin: 0;
+    li{
+        padding: 0;
+    }
+}
+
