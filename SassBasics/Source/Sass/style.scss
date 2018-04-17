@@ -1,4 +1,6 @@
+@import "Base/base";
+
 h1
 {
-    font-size: 50px;
+    font-size: $header-size;
 }
