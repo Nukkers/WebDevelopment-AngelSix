@@ -1,4 +1,4 @@
-
+@import "base.mixins";
 // setting the background color using the color from the palatte.scss file 
 html
 {
@@ -10,7 +10,7 @@ html
 a{
     color: $color3;
     // & is called parent selector 
-    &:hover
+    @include hocus()
     {
         color: $color2;
     }

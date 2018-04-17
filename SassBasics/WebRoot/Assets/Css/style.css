@@ -8,7 +8,7 @@ html {
 
 a {
   color: #38b2ff; }
-  a:hover {
+  a:hover, a:focus {
     color: #ff47e3; }
 
 ul {
@@ -40,5 +40,21 @@ h5 {
 
 h6 {
   font-size: 14.4px; }
+
+blockquote {
+  border-left: 2px solid #ff47e3;
+  padding-left: 24px; }
+
+.box, .rounded-box {
+  background: #38b2ff;
+  padding: 24px; }
+  .box > p, .rounded-box > p {
+    margin: 0; }
+
+.rounded-box {
+  -webkit-border-radius: 24px;
+  -moz-border-radius: 24px;
+  -ms-border-radius: 24px;
+  border-radius: 24px; }
 
 /*# sourceMappingURL=style.css.map */
