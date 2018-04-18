@@ -1,0 +1,5 @@
+<!--@ output index-full:wrapped @-->
+<!--@ output index-content @-->
+<!--@ include header:wrapped @-->
+    <h1>Header</h1>
+<!--@ include footer:wrapped @-->

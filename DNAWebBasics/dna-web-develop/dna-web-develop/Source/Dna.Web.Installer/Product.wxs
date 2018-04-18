@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Common includes -->
+<?include Common.wxi?>
+
+<!-- 
+    To release a new version
+    
+    1. Change the ProductCode for both 32 and 64bit to new GUIDs
+    2. Change Dna.Web.Core Assembly Version to new version (x.x.x.y)
+         NOTE: Updating last digit (y) won't cause old version to be removed
+               Update one of the first 3 digits to trigger an upgrade/remove old version
+    3. Update index.md in Dna Web GitHub Pages site to point to latest download
+    4. Update previous.md in Dna Web GitHub Pages site to point to older download
+    5. Update changelog.md in Dna Web GitHub Pages site
+    6. Build each installer (change configuration to Release)
+    7. Copy .msi files to Dna Web GitHub Pages Releases folder
+    8. Push changes to git
+
+-->
+
+<!-- Set a specific product code based on the processor architecture build variable -->
+<?if $(var.Platform)=x64 ?>
+<?define ProductCode = "{5C01DB35-5489-49D5-9958-FEC90B207229}" ?>
+<?else ?>
+<?define ProductCode = "{E4D4ACCF-1BEC-4605-81EE-4694D0D89FA0}" ?>
+<?endif ?>
+<?define UpgradeCode = "{452D79DF-DD6D-4904-B047-530C37367094}" ?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  
+  <Product Id="$(var.ProductCode)" 
+           Name="!(loc.ProductName_$(var.Platform)) $(var.BuildVersion)"
+           Language="1033"
+           Version="$(var.BuildVersion)"
+           Manufacturer="$(var.CompanyName)" 
+           UpgradeCode="$(var.UpgradeCode)">
+
+    <Package InstallerVersion="200"
+             InstallScope="perMachine"
+             Compressed="yes"
+             Keywords="!(loc.Keywords)"
+             Description="!(loc.Description)"
+             Comments="!(loc.Comments)"
+             Languages="!(loc.Language)"
+             Manufacturer="$(var.CompanyName)"
+             InstallPrivileges="elevated"
+             Platform="$(var.Platform)" />
+
+
+    <!-- Open change log once finished install -->
+    <Property Id="MyURL"><![CDATA[http://www.dnaweb.io/changelog]]></Property>
+    <CustomAction Id="SetOpenURL" Property="WixShellExecTarget" Value="[MyURL]" />
+    <CustomAction Id="OpenURL" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes" Return="ignore" />
+
+    <!-- 
+    Installation sequence     
+    -->
+    <InstallExecuteSequence>
+
+      <!-- Launch webpage after an install install -->
+      <Custom Action="SetOpenURL" After="InstallFinalize">NOT Installed AND NOT REMOVEM</Custom>
+      <Custom Action="OpenURL" After="SetOpenURL">NOT Installed AND NOT REMOVE</Custom>
+      
+    </InstallExecuteSequence>
+
+    <!-- Remove old versions -->
+    <MajorUpgrade DowngradeErrorMessage="A later version of Dna Web is already installed. Setup will now exit." />
+    
+    <!-- Use default media details (.cab file) -->
+    <MediaTemplate EmbedCab="yes" />
+
+    <!-- Icon -->
+    <Icon Id="icon.ico" SourceFile="$(var.Dna.Web.CommandLine.ProjectDir)\app-icon.ico"/>
+
+    <!-- Add/Remove Programs Support -->
+    <Property Id="ARPURLINFOABOUT">https://github.com/angelsix/dna-web</Property>
+    <Property Id="ARPPRODUCTICON">icon.ico</Property>
+    
+    <!-- User interface -->
+    <UIRef Id="WixUI_Minimal" />
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\Assets\license.rtf" />
+    <WixVariable Id="WixUIBannerBmp" Value="$(var.ProjectDir)\Assets\Banner.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="$(var.ProjectDir)\Assets\Background.bmp" />
+
+    <Feature Id="ProductFeature" Title="DnaWeb" Level="1">
+      
+      <!-- Our Stuff -->
+      <ComponentGroupRef Id="ProductComponents" />
+      <ComponentGroupRef Id="DnaWeb" />
+
+      <!-- Directories in Directories.wxs -->
+
+      <!-- Components in Components.wxs -->
+
+    </Feature>
+
+  </Product>
+
+</Wix>

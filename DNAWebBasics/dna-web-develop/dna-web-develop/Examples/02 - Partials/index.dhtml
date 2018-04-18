@@ -1,0 +1,4 @@
+<!--@ output index @-->
+<!--@ include header @-->
+    <h1>Header</h1>
+<!--@ include footer @-->
