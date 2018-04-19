@@ -1,4 +1,102 @@
+// set the general background color of the site 
 html
 {
-    
+    background: black;
+    color: white;
+    font-family: sans-serif;
 }
+// set the margin to default for all browsers for now
+body{ margin: 0; }
+// same with the headings and p 
+h1, h2, h3, h4, h5, h6, p {margin: 0; line-height: 1.3;}
+
+// the whole website container 
+.container
+{
+    padding: 24px;
+}
+// all the headers colors 
+.header
+{
+    background: blue;
+}
+// wrappers is the middle section which contains the content 
+.wrapper
+{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1000px;
+   
+}
+// any div tags with the word center in align text centrally 
+.center { text-align: center;}
+
+// any div tags with grid in 
+.grid
+{
+    font-size: 0;
+    .col
+    {
+        box-sizing: border-box;
+        font-size: 16px;
+        display: inline-block;
+        width: 100%;
+        &.half{ width: 50%; }
+        &.content-a, &.content-b, &.content-c, &.content-d
+        {
+            width: 25%;
+            padding: 20px;
+        }
+
+        // this is the part that makes it responsive 
+        // when the screen width goes <= 900px 
+        // execute the block of instructions within it 
+        // i.e. make the width to 50% rather than 25%
+        // below desktop 
+        @media only screen and (max-width: 900px)
+        {
+            &.content-a, &.content-b, &.content-c, &.content-d
+            {
+                width: 50%;
+            }
+            .button
+            {
+                text-align: center;
+                display: block;
+            }
+        }
+
+        // below tablet 
+        @media only screen and (max-width: 600px)
+        {
+            &.content-a, &.content-b, &.content-c, &.content-d
+            {
+                width: 100%;
+            }
+            .half
+            {
+               width: 100%;
+            }
+        }
+
+        &.content-a { background: red;}
+        &.content-b { background: green;}
+        &.content-c { background: blue;}
+        &.content-d { background: yellow;}
+
+
+
+    }
+}
+// make the buttons look more realistic 
+.button
+{
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 5px;
+    display: inline-block;
+}
+
+.left { text-align: left;}
+.right {text-align: right;}

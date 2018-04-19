@@ -1,5 +1,34 @@
 <!--@ include header @-->
 
-        <h1>Header</h1>
+<!--this will hold the hold background of the site -->
+<div class="container header">
+        <!--this will hold the main middle section of site where the content will sit-->
+        <div class="wrapper">
+            <div class="grid">
+                    <div class="col center">
+                            <h1>AngelSix</h1>
+                            <p>I develop software plus hardware</p>
+
+                            <div class="grid">
+                                    <div class="col half right"><div class="button">Tell me more</div></div>
+                                    <div class="col half left"><div class="button">Contact me</div></div>                                                                                          
+                            </div>
+                    </div>
+            </div>    
+        </div>
+</div>
+
+<!--this will hold the hold background of the site -->
+<div class="container">
+        <!--this will hold the main middle section of site where the content will sit-->
+        <div class="wrapper">
+                <div class="grid center">
+                        <div class="col content-a">Content A</div>
+                        <div class="col content-b">Content B</div>
+                        <div class="col content-c">Content C</div>
+                        <div class="col content-d">Content D</div>
+                </div>    
+        </div>
+</div>
 
 <!--@ include footer @-->
