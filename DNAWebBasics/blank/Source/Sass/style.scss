@@ -1,2 +1,41 @@
 @import "Fabric/Settings/dna.fabric.settings";
 @import "Fabric/dna.fabric";
+
+// top menus top/bottom padding 
+$top-menu-standard-padding: $spacing-normal;
+ 
+.top-menu-standard2
+{
+    // fixed position 
+    position: fixed;
+    top: 0;
+
+    // Max width
+    width: 100%; 
+
+    // make sure menu stays above everything else 
+    z-index: 1000; 
+
+    // main background colour
+    background: $color1;
+    
+    // Text is general bright color
+    color: $color6;
+
+    // add top/bottom padding 
+    padding: $top-menu-standard-padding;
+
+
+    // set the logo size
+    img {height: 50px; width: auto;}
+
+
+    // wrapper  // selecting the first div 
+    >div
+    {
+        // make menu warp to grid max width 
+        @extend .grid-wrapper;
+    }
+
+}
+

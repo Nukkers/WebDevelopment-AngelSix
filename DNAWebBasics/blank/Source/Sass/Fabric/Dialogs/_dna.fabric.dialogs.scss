@@ -165,7 +165,7 @@
         border-radius: $spacing-small;
 
         // Border with highlight color
-        border: 2px solid $color4;
+        border: 20px solid $color4;
 
         // No rounded border for mobile
         @include media($breakpoint-mobile)
