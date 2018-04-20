@@ -1,0 +1,178 @@
+@import "Fabric/Settings/dna.fabric.settings";
+@import "Fabric/dna.fabric";
+
+// top menus top/bottom padding 
+$top-menu-standard-padding: $spacing-normal;
+$top-menu-standard-reduced-padding: $spacing-small;
+ 
+
+// logo height 
+$top-menu-standard-logo-height: $spacing-largest;
+$top-menu-standard-reduced-logo-height: $spacing-larger;
+
+.top-menu-standard2
+{
+   
+    transition: padding $transition-normal;
+
+
+    // fixed position 
+    position: fixed;
+    top: 0;
+
+    // Max width
+    width: 100%; 
+
+    // make sure menu stays above everything else 
+    z-index: 1000; 
+
+    // main background colour
+    background: $color1;
+    
+    // Text is general bright color
+    color: $color6;
+
+    // add top/bottom padding 
+    padding: $top-menu-standard-padding;
+
+    // when the menu is reduced in size 
+    &.reduced
+    {
+        // reduce padding 
+        padding: $top-menu-standard-reduced-padding;
+        // set the image size
+        >div > img
+        {
+            height:$top-menu-standard-reduced-logo-height; 
+        }
+
+        // reduced menu items padding 
+        > div > ul > li > a
+        {
+            padding: $spacing-small;
+        }
+         
+
+    }
+    
+
+
+    // wrapper  // selecting the first div 
+    > div
+    {
+        // make menu warp to grid max width 
+        @extend .grid-wrapper;
+
+        // set the logo sizes 
+        > img
+        {
+            transition: height $transition-normal;
+
+            // make it shake on hover 
+            @extend .shake;
+
+
+            height: $top-menu-standard-logo-height;
+            width: auto;
+        }
+
+        // menu icon
+        >img + div
+        {
+            // hide by default
+            @extend .hidden;
+            
+            // below laptop
+            @extend .#{$breakpoint-below-laptop}-show-block;
+            // float to right 
+            float: right;
+
+            // make it bigger 
+            font-size: $font-larger;
+
+            // make padding same all round 
+            padding: $spacing-small;
+
+            > a
+            {
+                // transition smoothly
+                transition: transform $transition-normal;
+
+                color: $color6;
+                display: inline-block;
+
+                &:hover
+                {
+                    // bright hover color 
+                    color: $color2;
+
+                    // grow when we hover
+                    transform-origin: 50% 50%;
+                    transform: scale(1.3,1.3); 
+                }
+
+            }
+                
+            
+        }
+
+        
+
+
+        // menu items 
+        >ul
+        {
+            // transition smoothly 
+            transition: transform $transition-normal;
+
+
+            // turn ul into horizontal menu  
+            @extend .horizontal-menu;
+            // float menu over to the right 
+            float: right;
+            
+            // when below laptop
+            @include media($breakpoint-below-laptop)
+            {
+                // remove the float 
+                float: none;
+
+                // make full width 
+                position: absolute;
+                left: 0;
+                right: 0;
+
+                // fill the page 
+                height: 2000%;
+                
+                // hide of to the left 
+                transform: translate((-100%, 0));
+                
+                // and show when its got the expanded class 
+                &.expanded
+                {
+                    transform: translate(0,0);
+                }
+
+
+                // add background back in that we lost from position absolute 
+                background:$color1;
+
+                // for each item 
+                >li
+                {
+                    // make 100% width 
+                    width: 100%;
+                    text-align: center;
+                }
+                
+            }
+
+        }
+
+    }
+
+}
+
+
+
