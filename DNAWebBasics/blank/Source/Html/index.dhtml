@@ -11,24 +11,19 @@
 </head> 
  
 <body> 
- 
-   
-
- <!--Top navigation menu-->
- <nav class="top-menu-standard2">
+    <!--Top navigation menu-->
+    <nav class="top-menu-standard2 reduced">
         <div>
             <!--Logo-->
             <img src="/Assets/Images/logo-flat.png"/>
 
             <!--Menu Icon-->
-            <div class="menu-icon">
+            <div>
                 <a href="#"><i class="ion-navicon-round"></i></a>
-
-
             </div>
 
             <!--Menu items-->
-            <ul >
+            <ul>
                 <li><a href="#">blog</a></li>
                 <li><a href="#">youtube</a></li>
                 <li><a href="#">solidworks</a></li>
